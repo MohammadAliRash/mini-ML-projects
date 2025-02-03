@@ -1,0 +1,49 @@
+# Report on Image Classification Using XGBoost with MNIST and CIFAR-10 Datasets
+
+## Introduction
+
+This report presents an analysis of image classification tasks performed using the XGBoost algorithm on two widely recognized datasets: MNIST and CIFAR-10. The code segments outline the process of loading datasets, preprocessing images, applying dimensionality reduction techniques (PCA), training machine learning models, and evaluating their performance.
+
+## Code Overview
+
+The overall structure of the code can be categorized into four main sections, each focusing on different aspects of the classification process.
+
+### 1. MNIST Classification without PCA
+
+- **Data Loading**: The MNIST dataset, consisting of 28x28 pixel images of handwritten digits, is loaded using the `fetch_openml` function.
+- **Preprocessing**: The pixel values are normalized to the range [0, 1] to improve model training efficiency. The dataset is then split into training (80%) and testing (20%) sets.
+- **Model Training**: An XGBoost classifier is trained on the training data.
+- **Evaluation**: The model's accuracy is evaluated on the testing set, providing insights into its performance on unseen data.
+
+### 2. MNIST Classification with PCA
+
+- **Data Loading**: Similar to the first segment, the MNIST dataset is loaded.
+- **PCA for Dimensionality Reduction**: The code applies Principal Component Analysis (PCA) to reduce the feature space to 50 components. This step aims to capture the most significant variance in the data while reducing dimensionality.
+- **Model Training and Evaluation**: An XGBoost classifier is trained using the PCA-transformed features, and accuracy is evaluated similarly to the first segment.
+
+### 3. CIFAR-10 Classification without PCA
+
+- **Data Loading**: The CIFAR-10 dataset, which contains 32x32 color images across 10 different classes, is loaded using TensorFlow's Keras API.
+- **Preprocessing**: The images are flattened into 1D arrays, and pixel values are normalized.
+- **Model Training and Evaluation**: An XGBoost model is trained on the CIFAR-10 dataset, and its accuracy is evaluated against the testing set.
+
+### 4. CIFAR-10 Classification with PCA
+
+- **Data Loading**: The CIFAR-10 dataset is loaded as in the previous segment.
+- **PCA for Dimensionality Reduction**: PCA is applied to reduce the dimensionality of the CIFAR-10 images to 50 components.
+- **Per-Class PCA**: The code also computes PCA components for each class separately, aiming to enhance classification performance by capturing class-specific features.
+- **Model Training and Evaluation**: An XGBoost model is trained using both the overall PCA features and the per-class PCA features, with accuracy evaluated for both cases.
+
+## Results
+
+### MNIST Dataset
+
+- The accuracy of the XGBoost model on the MNIST dataset, both with and without PCA, is reported. The use of PCA generally improves model performance by reducing noise and redundancy in the data.
+
+### CIFAR-10 Dataset
+
+- Similar accuracy evaluations are conducted for the CIFAR-10 dataset. The results indicate the model's ability to classify images based on the learned features, with PCA techniques potentially enhancing performance.
+
+## Conclusion
+
+The presented code segments demonstrate effective methods for image classification using the XGBoost algorithm on the MNIST and CIFAR-10 datasets. By leveraging PCA for dimensionality reduction, the models can achieve improved accuracy and efficiency. This analysis highlights the importance of preprocessing and feature extraction in machine learning tasks, especially in image classification scenarios. Further exploration could include hyperparameter tuning, experimenting with different classifiers, and implementing more advanced techniques like convolutional neural networks (CNNs) for improved performance.
